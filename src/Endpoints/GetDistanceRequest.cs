@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
-namespace SubwayApi;
+namespace SubwayApi.Endpoints;
 
 public class GetDistanceRequest
 {

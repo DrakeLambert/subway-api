@@ -1,7 +1,7 @@
 using Ardalis.ApiEndpoints;
 using Microsoft.AspNetCore.Mvc;
 
-namespace SubwayApi;
+namespace SubwayApi.Endpoints;
 
 public class GetDistanceEndpoint : EndpointBaseAsync
     .WithRequest<GetDistanceRequest>

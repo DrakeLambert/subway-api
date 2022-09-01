@@ -1,4 +1,4 @@
-namespace SubwayApi;
+namespace SubwayApi.Endpoints;
 
 public record GetDistanceResponse(
     double Distance,
