@@ -6,16 +6,16 @@ namespace SubwayApi;
 public class StationSeedService : IHostedService
 {
     private readonly IFileProvider _fileProvider;
-    private readonly StationRepository _stationRepository;
+    private readonly IServiceProvider _services;
 
     private const string STATION_FILE_NAME = "subway-stations.json";
 
     private static readonly JsonSerializerOptions _serializerOptions = new(JsonSerializerDefaults.Web);
 
-    public StationSeedService(IFileProvider fileProvider, StationRepository stationRepository)
+    public StationSeedService(IFileProvider fileProvider, IServiceProvider services)
     {
         _fileProvider = fileProvider;
-        _stationRepository = stationRepository;
+        _services = services;
     }
 
     public async Task StartAsync(CancellationToken cancellationToken)
@@ -35,7 +35,9 @@ public class StationSeedService : IHostedService
             throw new Exception($"{file.PhysicalPath} must not contain a null value.");
         }
 
-        _stationRepository.AddRange(stations);
+        using var serviceScope = _services.CreateScope();
+        var repository = serviceScope.ServiceProvider.GetRequiredService<StationRepository>();
+        await repository.AddRangeAsync(stations); 
     }
 
     public Task StopAsync(CancellationToken cancellationToken) => Task.CompletedTask;

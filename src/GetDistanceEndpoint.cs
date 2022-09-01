@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace SubwayApi;
 
-public class GetDistanceEndpoint : EndpointBaseSync
+public class GetDistanceEndpoint : EndpointBaseAsync
     .WithRequest<GetDistanceRequest>
     .WithActionResult<double>
 {
@@ -15,10 +15,10 @@ public class GetDistanceEndpoint : EndpointBaseSync
     }
 
     [HttpGet("/distances")]
-    public override ActionResult<double> Handle([FromQuery] GetDistanceRequest request)
+    public override async Task<ActionResult<double>> HandleAsync([FromQuery] GetDistanceRequest request, CancellationToken cancellationToken = default)
     {
-        var station1 = _stationRepository.GetById(request.Station1Id);
-        var station2 = _stationRepository.GetById(request.Station2Id);
+        var station1 = await _stationRepository.GetByIdAsync(request.Station1Id);
+        var station2 = await _stationRepository.GetByIdAsync(request.Station2Id);
 
         if (station1 is null || station2 is null)
         {

@@ -1,16 +1,24 @@
 using System.Collections;
+using Microsoft.EntityFrameworkCore;
 
 namespace SubwayApi;
 
-public class StationRepository : IEnumerable<Station>
+public class StationRepository
 {
-    private readonly List<Station> _stations = new();
+    private readonly SubwayApiDbContext _dbContext;
 
-    public void AddRange(IEnumerable<Station> stations) => _stations.AddRange(stations);
+    public StationRepository(SubwayApiDbContext dbContext)
+    {
+        _dbContext = dbContext;
+    }
 
-    public IEnumerator<Station> GetEnumerator() => _stations.GetEnumerator();
+    public async Task AddRangeAsync(IEnumerable<Station> stations)
+    {
+        _dbContext.Stations.AddRange(stations);
+        await _dbContext.SaveChangesAsync();
+    }
 
-    IEnumerator IEnumerable.GetEnumerator() => _stations.GetEnumerator();
+    public async Task<IEnumerable<Station>> ListAsync() => await _dbContext.Stations.ToListAsync();
 
-    public Station? GetById(Guid stationId) => _stations.SingleOrDefault(station => station.Id == stationId);
+    public async Task<Station?> GetByIdAsync(Guid stationId) => await _dbContext.Stations.SingleOrDefaultAsync(station => station.Id == stationId);
 }

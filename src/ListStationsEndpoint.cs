@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace SubwayApi;
 
-public class ListStationsEndpoint : EndpointBaseSync
+public class ListStationsEndpoint : EndpointBaseAsync
     .WithoutRequest
     .WithResult<IEnumerable<Station>>
 {
@@ -15,5 +15,5 @@ public class ListStationsEndpoint : EndpointBaseSync
     }
 
     [HttpGet("/stations")]
-    public override IEnumerable<Station> Handle() => _stationRepository;
+    public override async Task<IEnumerable<Station>> HandleAsync(CancellationToken cancellationToken = default) => await _stationRepository.ListAsync();
 }
