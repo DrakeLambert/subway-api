@@ -11,4 +11,6 @@ public class StationRepository : IEnumerable<Station>
     public IEnumerator<Station> GetEnumerator() => _stations.GetEnumerator();
 
     IEnumerator IEnumerable.GetEnumerator() => _stations.GetEnumerator();
+
+    public Station? GetById(Guid stationId) => _stations.SingleOrDefault(station => station.Id == stationId);
 }
