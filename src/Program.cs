@@ -14,12 +14,18 @@ builder.Services.AddDbContext<SubwayApiDbContext>(options =>
 builder.Services.AddTransient<StationRepository>();
 builder.Services.AddSingleton(builder.Environment.ContentRootFileProvider);
 builder.Services.AddHostedService<StationSeedService>();
+
+builder.Services.AddIdentityCore<IdentityUser>()
+    .AddEntityFrameworkStores<SubwayApiDbContext>();
+
 builder.Services.AddControllers();
 
 var app = builder.Build();
 
 app.UseSwagger();
 app.UseSwaggerUI();
+
+app.UseAuthentication();
 
 app.MapControllers();
 
