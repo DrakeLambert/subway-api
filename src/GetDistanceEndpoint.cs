@@ -5,7 +5,7 @@ namespace SubwayApi;
 
 public class GetDistanceEndpoint : EndpointBaseAsync
     .WithRequest<GetDistanceRequest>
-    .WithActionResult<double>
+    .WithActionResult<GetDistanceResponse>
 {
     private readonly StationRepository _stationRepository;
 
@@ -15,7 +15,7 @@ public class GetDistanceEndpoint : EndpointBaseAsync
     }
 
     [HttpGet("/distances")]
-    public override async Task<ActionResult<double>> HandleAsync([FromQuery] GetDistanceRequest request, CancellationToken cancellationToken = default)
+    public override async Task<ActionResult<GetDistanceResponse>> HandleAsync([FromQuery] GetDistanceRequest request, CancellationToken cancellationToken = default)
     {
         var station1 = await _stationRepository.GetByIdAsync(request.Station1Id);
         var station2 = await _stationRepository.GetByIdAsync(request.Station2Id);
@@ -25,6 +25,6 @@ public class GetDistanceEndpoint : EndpointBaseAsync
             return NotFound();
         }
 
-        return station1.DistanceTo(station2);
+        return new GetDistanceResponse(station1.DistanceTo(station2));
     }
 }
