@@ -14,6 +14,9 @@ public class GetDistanceEndpoint : EndpointBaseAsync
         _stationRepository = stationRepository;
     }
 
+    /// <summary>
+    /// Get the distance between two stations.
+    /// </summary>
     [HttpGet("/distances")]
     public override async Task<ActionResult<GetDistanceResponse>> HandleAsync([FromQuery] GetDistanceRequest request, CancellationToken cancellationToken = default)
     {

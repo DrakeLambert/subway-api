@@ -16,6 +16,9 @@ public class GetFrequentedStationsEndpoint : EndpointBaseAsync
         _db = db;
     }
 
+    /// <summary>
+    /// Get the current user's list of frequented stations. Requires authentication.
+    /// </summary>
     [Authorize]
     [HttpGet("frequented-stations")]
     public override async Task<ActionResult<IEnumerable<Station>>> HandleAsync(CancellationToken cancellationToken = default)

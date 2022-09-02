@@ -14,6 +14,9 @@ public class ListStationsEndpoint : EndpointBaseAsync
         _stationRepository = stationRepository;
     }
 
+    /// <summary>
+    /// List all stations.
+    /// </summary>
     [HttpGet("/stations")]
     public override async Task<IEnumerable<Station>> HandleAsync(CancellationToken cancellationToken = default) => await _stationRepository.ListAsync();
 }

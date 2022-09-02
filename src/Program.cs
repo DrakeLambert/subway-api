@@ -10,6 +10,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
+    var filePath = Path.Combine(AppContext.BaseDirectory, "SubwayApi.xml");
+    options.IncludeXmlComments(filePath);
+
+    options.TagActionsBy(endpoint => new[] { endpoint.RelativePath });
+
     options.AddSecurityDefinition("Basic", new OpenApiSecurityScheme
     {
         Type = SecuritySchemeType.Http,

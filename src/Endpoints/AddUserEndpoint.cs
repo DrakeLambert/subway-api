@@ -15,6 +15,9 @@ public class AddUserEndpoint : EndpointBaseAsync
         _userManager = userManager;
     }
 
+    /// <summary>
+    /// Add a user.
+    /// </summary>
     [HttpPost("users")]
     public override async Task<ActionResult> HandleAsync([FromBody] AddUserRequest request, CancellationToken cancellationToken = default)
     {

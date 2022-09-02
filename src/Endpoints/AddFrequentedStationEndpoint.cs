@@ -16,6 +16,9 @@ public class AddFrequentedStationEndpoint : EndpointBaseAsync
         _db = db;
     }
 
+    /// <summary>
+    /// Add a station to the current user's list of frequented stations. Requires authentication.
+    /// </summary>
     [Authorize]
     [HttpPost("frequented-stations")]
     public override async Task<ActionResult> HandleAsync(AddFrequentedStationRequest request, CancellationToken cancellationToken = default)
