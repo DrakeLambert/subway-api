@@ -39,6 +39,6 @@ public class AddFrequentedStationEndpoint : EndpointBaseAsync
         _db.FrequentedStations.Add(newFrequentedStation);
         await _db.SaveChangesAsync(cancellationToken);
 
-        return Ok();
+        return NoContent();
     }
 }
