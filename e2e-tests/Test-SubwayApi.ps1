@@ -1,6 +1,6 @@
 $ErrorActionPreference = 'Stop'
 
-$baseUri = 'https://localhost:7295'
+$baseUri = 'http://localhost:5001'
 
 $allStations = Invoke-RestMethod "$baseUri/stations"
 
