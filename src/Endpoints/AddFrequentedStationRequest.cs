@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SubwayApi.Endpoints;
 
-public class FrequentedStationRequest
+public class AddFrequentedStationRequest
 {
     [Required]
     public Guid? StationId { get; set; }

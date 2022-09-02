@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 namespace SubwayApi.Endpoints;
 
 public class AddFrequentedStationEndpoint : EndpointBaseAsync
-    .WithRequest<FrequentedStationRequest>
+    .WithRequest<AddFrequentedStationRequest>
     .WithActionResult
 {
     private readonly SubwayApiDbContext _db;
@@ -18,13 +18,13 @@ public class AddFrequentedStationEndpoint : EndpointBaseAsync
 
     [Authorize]
     [HttpPost("frequented-stations")]
-    public override async Task<ActionResult> HandleAsync(FrequentedStationRequest request, CancellationToken cancellationToken = default)
+    public override async Task<ActionResult> HandleAsync(AddFrequentedStationRequest request, CancellationToken cancellationToken = default)
     {
         var station = await _db.Stations
             .SingleOrDefaultAsync(station => station.Id == request.StationId, cancellationToken: cancellationToken);
         if (station is null)
         {
-            ModelState.AddModelError(nameof(FrequentedStationRequest.StationId), "Station does not exist.");
+            ModelState.AddModelError(nameof(AddFrequentedStationRequest.StationId), "Station does not exist.");
             return ValidationProblem();
         }
 
