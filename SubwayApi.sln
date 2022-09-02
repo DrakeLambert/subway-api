@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubwayApi", "src\SubwayApi.csproj", "{1805F1E6-EAD0-421A-BAD4-82826369C2C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubwayApi.Tests", "tests\SubwayApi.Tests.csproj", "{82B22286-AC9F-43DC-9448-ECB0087F5940}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubwayApi.Tests", "unit-tests\SubwayApi.Tests.csproj", "{A65C712B-6620-4708-A0C2-428F55628676}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,9 +20,9 @@ Global
 		{1805F1E6-EAD0-421A-BAD4-82826369C2C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1805F1E6-EAD0-421A-BAD4-82826369C2C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1805F1E6-EAD0-421A-BAD4-82826369C2C8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{82B22286-AC9F-43DC-9448-ECB0087F5940}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{82B22286-AC9F-43DC-9448-ECB0087F5940}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{82B22286-AC9F-43DC-9448-ECB0087F5940}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{82B22286-AC9F-43DC-9448-ECB0087F5940}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A65C712B-6620-4708-A0C2-428F55628676}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A65C712B-6620-4708-A0C2-428F55628676}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A65C712B-6620-4708-A0C2-428F55628676}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A65C712B-6620-4708-A0C2-428F55628676}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
